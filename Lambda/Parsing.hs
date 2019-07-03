@@ -6,6 +6,7 @@ module Parsing
 , eof
 , fail
 , failWith
+, from
 , many
 , many1
 , next
@@ -143,3 +144,7 @@ string s = f s
     f ""     = pure ""
     f (c:cs) = (:) <$> failWith m (char c) <*> f cs
     m = "expected \"" ++ s ++ "\""
+
+-- In many cases, we want to parse characters from a specific set.
+from :: [Char] -> Parser Char
+from cs = sat $ (flip elem) cs

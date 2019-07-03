@@ -1,6 +1,6 @@
 module Parser (parseTerm) where
 
-import Data.Char (isLower, isSpace)
+import Data.Char (isSpace)
 import Prelude hiding (abs)
 import Parsing
 import Result (Result(..))
@@ -30,7 +30,8 @@ abs = try binder >>
     body   = failWith "expected lambda body" term
 
 name :: Parser String
-name = failWith "illegal name" $ many1 $ sat isLower
+name = failWith "illegal name" $ many1 nameChar
+  where nameChar = from (['a'..'z'] ++ ['\''])
 
 var :: Parser Term
 var = try (Var <$> token name)

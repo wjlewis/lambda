@@ -1,9 +1,9 @@
 module Main where
 
-import Parser (parseTerm)
-import Reduction (reduce)
-import Repl (repl)
-import Term (Term(..), removeNames, restoreNames)
+import Lambda.Parser (parseTerm)
+import Lambda.Reduction (reduce)
+import Lambda.Repl (repl)
+import Lambda.Term (Term(..), removeNames, restoreNames)
 
 main :: IO ()
 main = putStrLn "λ-repl\n:q to quit\n" >>

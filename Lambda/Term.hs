@@ -1,4 +1,4 @@
-module Term (Term(..), NTerm(..), removeNames, restoreNames, beta) where
+module Lambda.Term (Term(..), NTerm(..), removeNames, restoreNames, beta) where
 
 import Data.List (findIndex, intercalate)
 import Data.Set (Set)

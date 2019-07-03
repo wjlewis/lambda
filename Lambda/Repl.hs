@@ -1,4 +1,4 @@
-module Repl (repl) where
+module Lambda.Repl (repl) where
 
 import System.IO (hFlush, stdout)
 

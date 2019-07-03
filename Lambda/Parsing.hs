@@ -1,4 +1,4 @@
-module Parsing
+module Lambda.Parsing
 ( Parser(..)
 , (<|>)
 , chainl1
@@ -17,7 +17,7 @@ module Parsing
 
 import Control.Monad (ap, liftM)
 import Prelude hiding (fail)
-import Result (Result(..))
+import Lambda.Result (Result(..))
 
 -- This Parser type is directly inspired by Hutton and Meijer's
 -- exposition on parser combinators. I've used `Result` as the return

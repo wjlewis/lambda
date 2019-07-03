@@ -1,4 +1,4 @@
-module Result (Result(..)) where
+module Lambda.Result (Result(..)) where
 
 import Control.Monad (ap, liftM)
 

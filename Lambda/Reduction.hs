@@ -1,6 +1,6 @@
-module Reduction (reduce) where
+module Lambda.Reduction (reduce) where
 
-import Term (NTerm(..), beta)
+import Lambda.Term (NTerm(..), beta)
 
 -- To reduce a term to a normal form (if it has one), we simple apply
 -- the stepping function until it can no longer make any progress.

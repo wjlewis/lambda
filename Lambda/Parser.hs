@@ -19,13 +19,13 @@ term = term' `chainl1` pure App
 
 abs :: Parser Term
 abs = try binder >>
-      param      >>= \n ->
+      params     >>= \ns ->
       arrow      >>
-      body       >>= \b ->
-      return $ Abs n b
+      body       >>= \b  ->
+      return $ foldr Abs b ns
   where
     binder = token $ char '\\'
-    param  = failWith "expected parameter" $ token name
+    params = failWith "expected parameters" $ many1 (token name)
     arrow  = token $ string "->"
     body   = failWith "expected lambda body" term
 

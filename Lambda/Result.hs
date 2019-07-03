@@ -20,6 +20,6 @@ instance Applicative Result where
 instance Monad Result where
   return = Ok
   r >>= f = case r of
-    Ok x   -> f x
-    Miss m -> Miss m
-    Fail m -> Fail m
+              Ok x   -> f x
+              Miss m -> Miss m
+              Fail m -> Fail m

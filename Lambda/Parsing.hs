@@ -1,17 +1,17 @@
 module Parsing
 ( Parser(..)
-, next
+, (<|>)
+, chainl1
+, char
 , eof
 , fail
-, (<|>)
 , failWith
-, try
 , many
 , many1
-, chainl1
+, next
 , sat
-, char
 , string
+, try
 ) where
 
 import Control.Monad (ap, liftM)
@@ -79,8 +79,8 @@ p <|> q = Parser $ \inp -> case runParser p inp of
 -- given parser's behavior otherwise.
 failWith :: String -> Parser a -> Parser a
 failWith m p = Parser $ \inp -> case runParser p inp of
-  Fail _ -> Fail m
-  r      -> r
+                                  Fail _ -> Fail m
+                                  r      -> r
 
 -- I alluded to this combinator above, which converts a failing parser
 -- into a parser that misses. This allows for backtracking in the
@@ -88,8 +88,8 @@ failWith m p = Parser $ \inp -> case runParser p inp of
 -- combinator (<|>).
 try :: Parser a -> Parser a
 try p = Parser $ \inp -> case runParser p inp of
-  Fail m -> Miss m
-  r      -> r
+                           Fail m -> Miss m
+                           r      -> r
 
 -- As its name indicates, `many` constructs a parser that applies the
 -- provided parser zero or more times until it fails. It collects the

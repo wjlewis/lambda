@@ -1,10 +1,10 @@
-module Parser where
+module Parser (parseTerm) where
 
-import Data.Char (isSpace, isLower)
-import Parsing
-import Term (Term(..))
+import Data.Char (isLower, isSpace)
 import Prelude hiding (abs)
+import Parsing
 import Result (Result(..))
+import Term (Term(..))
 
 parseTerm :: String -> Either String Term
 parseTerm inp = case runParser p inp of
